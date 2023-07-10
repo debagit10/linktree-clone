@@ -1,0 +1,10 @@
+.add-modal {
+  text-align: center;
+}
+.add-modal > h3 {
+  color: blue;
+}
+.add-modal > input {
+  width: 500px;
+  text-align: center;
+}
