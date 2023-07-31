@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useCookies } from "react-cookie";
 import axios from "axios";
-import "./Add.css";
 
-const Add = (setShowAdd) => {
+const Add = () => {
   //e.preventDefault();
   const [url, setUrl] = useState();
   const [title, setTitle] = useState();
@@ -33,27 +32,34 @@ const Add = (setShowAdd) => {
     //window.location.reload();
   };
   return (
-    <div className="container-fluid add-modal">
-      <h3>Add link</h3>
-
-      <input
-        type="url"
-        className="form-control"
-        placeholder="Enter link"
-        onChange={(e) => setUrl(e.target.value)}
-      />
-
-      <input
-        type="text"
-        className="form-control"
-        placeholder="Enter link name"
-        onChange={(e) => setTitle(e.target.value)}
-      />
-
-      <button onClick={submit}>Submit</button>
-      <button onClick={() => setShowAdd}>Close</button>
-
-      {error && <p>{error}</p>}
+    <div>
+      <form>
+        <div class="mb-3">
+          <label for="recipient-name" class="col-form-label">
+            Title:
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            id="recipient-name"
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </div>
+        <div class="mb-3">
+          <label for="recipient-name" class="col-form-label">
+            URL:
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            id="recipient-name"
+            onChange={(e) => setUrl(e.target.value)}
+          />
+        </div>
+        <button className="btn btn-primary" onClick={submit}>
+          Save
+        </button>
+      </form>
     </div>
   );
 };

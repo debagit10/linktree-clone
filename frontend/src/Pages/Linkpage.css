@@ -1,0 +1,10 @@
+.linkpage {
+  width: 100vw;
+  background-color: rgb(77, 69, 69);
+}
+.toggler-button {
+  width: 100px;
+}
+.toggler-button > img {
+  width: 100%;
+}

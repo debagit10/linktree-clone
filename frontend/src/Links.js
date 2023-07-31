@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import EditLink from "./Modals/EditLink";
+import "./Links.css";
 
 const Links = ({ item }) => {
   const [edit, setEdit] = useState(false);
@@ -20,22 +21,53 @@ const Links = ({ item }) => {
   };
 
   return (
-    <li>
-      <div className="container-fluid">
-        <a href="#" target="_blank">
-          <h3>{item.title}</h3>
-        </a>
+    <>
+      <div
+        class="modal fade"
+        id="editModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">
+                Edit Link
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <EditLink item={item} />
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="buttons">
-        <button className="delete" onClick={deleteData}>
-          DELETE
-        </button>
-        <button className="edit" onClick={() => setEdit(true)}>
-          EDIT
-        </button>
+
+      <div className="mx-5">
+        <div className="link">
+          <a href={item.url} target="_blank">
+            <h3>{item.title}</h3>
+          </a>
+          <button onClick={deleteData}>Delete</button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#editModal"
+            data-bs-whatever="@mdo"
+          >
+            Edit
+          </button>
+          <i class="bi bi-clipboard copy" link={item.url}></i>
+        </div>
       </div>
-      {edit && <EditLink setEdit={setEdit} item={item} />}
-    </li>
+    </>
   );
 };
 

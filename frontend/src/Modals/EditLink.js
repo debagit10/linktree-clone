@@ -4,9 +4,10 @@ import React, { useState } from "react";
 const EditLink = ({ item, setEdit }) => {
   const [url, setUrl] = useState();
   const [title, setTitle] = useState();
+  //const navigate = useNavigate();
 
   const editData = async (e) => {
-    e.preventDefault();
+    //e.preventDefault();
     console.log(item.id, url, title, item.user_email);
     const user_email = item.user_email;
     const config = {
@@ -23,28 +24,36 @@ const EditLink = ({ item, setEdit }) => {
       console.error(error);
     }
   };
-  const changeValue = () => {};
 
   return (
     <div>
       <form>
-        <input
-          required
-          //placeholder={item.url}
-          value={item.url}
-          onChange={(e) => setUrl(e.target.value)}
-        />
-        <input
-          required
-          maxLength={30}
-          //placeholder={item.title}
-          value={item.title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <br />
-        <input type="submit" onClick={editData} />
+        <div class="mb-3">
+          <label for="recipient-name" class="col-form-label">
+            Title:
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            id="recipient-name"
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </div>
+        <div class="mb-3">
+          <label for="recipient-name" class="col-form-label">
+            Url:
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            id="recipient-name"
+            onChange={(e) => setUrl(e.target.value)}
+          />
+        </div>
+        <button onClick={editData} className="btn btn-primary">
+          Save
+        </button>
       </form>
-      <button onClick={() => setEdit}>Close</button>
     </div>
   );
 };
